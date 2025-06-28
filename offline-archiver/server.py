@@ -75,7 +75,9 @@ def server_static(filepath, root_path):
     """Serve static files from the archive."""
     if filepath.endswith('/'):
         filepath += 'index.html'
-    if not os.path.splitext(filepath)[1]:
+    elif not os.path.splitext(filepath)[1]:
+        if os.path.isfile(os.path.join(root_path, filepath)):
+            return static_file(filepath, root=root_path)
         filepath = os.path.join(filepath, 'index.html')
     return static_file(filepath, root=root_path)
 
