@@ -1,92 +1,122 @@
 import argparse
 import os
 import json
+import sqlite3
+import logging
 from bottle import Bottle, run, static_file, request, response
 
-BOOKMARKS_FILE = 'bookmarks.json'
+BOOKMARKS_DB = 'bookmarks.db'
 
-
-def get_bookmarks_path(root_path):
-    """Construct the absolute path to the bookmarks file."""
-    return os.path.join(root_path, BOOKMARKS_FILE)
-
-
-def load_bookmarks(root_path):
-    """Load bookmarks from the JSON file."""
-    bookmarks_path = get_bookmarks_path(root_path)
-    if not os.path.exists(bookmarks_path):
-        return []
+def init_db(root_path):
+    """Initialize the SQLite database and create the bookmarks table if it doesn't exist."""
+    db_path = os.path.join(root_path, BOOKMARKS_DB)
     try:
-        with open(bookmarks_path, 'r', encoding='utf-8') as f:
-            return json.load(f)
-    except (IOError, json.JSONDecodeError):
-        return []
+        con = sqlite3.connect(db_path)
+        cur = con.cursor()
+        cur.execute("""
+            CREATE TABLE IF NOT EXISTS bookmarks (
+                id INTEGER PRIMARY KEY,
+                title TEXT NOT NULL,
+                url TEXT NOT NULL UNIQUE,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        """)
+        con.commit()
+        con.close()
+        logging.info(f"Database initialized at {db_path}")
+    except sqlite3.Error as e:
+        logging.error(f"Database error during initialization: {e}")
+        raise
 
+class ArchiveServer:
+    def __init__(self, root_path):
+        """Initializes the server with the specified root path for the archive."""
+        if not os.path.isdir(root_path):
+            raise FileNotFoundError(f"Error: Root directory not found at {root_path}")
+        self.root_path = os.path.abspath(root_path)
+        self.db_path = os.path.join(self.root_path, BOOKMARKS_DB)
+        self.app = Bottle()
+        self._setup_routes()
 
-def save_bookmarks(bookmarks, root_path):
-    """Save bookmarks to the JSON file."""
-    bookmarks_path = get_bookmarks_path(root_path)
-    try:
-        with open(bookmarks_path, 'w', encoding='utf-8') as f:
-            json.dump(bookmarks, f, indent=4)
-        return True
-    except IOError:
-        return False
+    def _setup_routes(self):
+        """Sets up all the URL routes for the Bottle application."""
+        self.app.route('/', method='GET')(self.serve_root)
+        self.app.route('/api/bookmarks', method='GET')(self.get_bookmarks_api)
+        self.app.route('/api/add_bookmark', method='POST')(self.add_bookmark_api)
+        self.app.route('/<filepath:path>', method='GET')(self.serve_static)
 
+    def get_bookmarks_api(self):
+        """API endpoint to return all bookmarks from the database."""
+        response.content_type = 'application/json'
+        bookmarks = []
+        try:
+            con = sqlite3.connect(self.db_path)
+            cur = con.cursor()
+            for row in cur.execute("SELECT title, url FROM bookmarks ORDER BY created_at DESC"):
+                bookmarks.append({'title': row[0], 'url': row[1]})
+            con.close()
+        except sqlite3.Error as e:
+            logging.error(f"API Error getting bookmarks: {e}")
+            response.status = 500
+            return json.dumps({'status': 'error', 'error': str(e)})
+        return json.dumps(bookmarks)
 
-app = Bottle()
+    def add_bookmark_api(self):
+        """API endpoint to add a new bookmark to the database."""
+        # IMPROVEMENT: Set content type at the start for all response paths.
+        response.content_type = 'application/json'
+        try:
+            data = request.json
+            if not data or 'title' not in data or 'url' not in data:
+                response.status = 400
+                return {'status': 'error', 'error': 'Invalid payload'}
 
+            con = sqlite3.connect(self.db_path)
+            cur = con.cursor()
+            cur.execute("INSERT OR IGNORE INTO bookmarks (title, url) VALUES (?, ?)", (data['title'], data['url']))
+            con.commit()
 
-@app.route('/api/bookmarks', method='GET')
-def get_bookmarks_api(root_path):
-    """Return all bookmarks."""
-    response.content_type = 'application/json'
-    bookmarks = load_bookmarks(root_path)
-    return json.dumps(bookmarks)
-
-
-@app.route('/api/add_bookmark', method='POST')
-def add_bookmark_api(root_path):
-    """Add a new bookmark."""
-    try:
-        data = request.json
-        if not data or 'title' not in data or 'url' not in data:
-            response.status = 400
-            return {'error': 'Invalid payload'}
-
-        bookmarks = load_bookmarks(root_path)
-        if not any(b['url'] == data['url'] for b in bookmarks):
-            bookmarks.append({'title': data['title'], 'url': data['url']})
-            if save_bookmarks(bookmarks, root_path):
-                response.status = 201
-                return {'status': 'success'}
+            if con.changes() > 0:
+                response.status = 201  # Created
+                result = {'status': 'success', 'message': 'Bookmark added.'}
             else:
-                response.status = 500
-                return {'error': 'Failed to save bookmarks'}
-        else:
-            return {'status': 'success', 'message': 'Bookmark already exists'}
-    except Exception as e:
-        response.status = 500
-        return {'error': str(e)}
+                response.status = 200  # OK
+                result = {'status': 'success', 'message': 'Bookmark already exists.'}
+            con.close()
+            return result
+        except json.JSONDecodeError:
+            response.status = 400
+            return {'status': 'error', 'error': 'Invalid JSON'}
+        except sqlite3.Error as e:
+            logging.error(f"API Error adding bookmark: {e}")
+            response.status = 500
+            return {'status': 'error', 'error': f'Database error: {e}'}
 
+    def serve_static(self, filepath):
+        """
+        Serve static files from the archive.
+        FIX: Removed .lower() on the filepath. This is the critical fix that allows
+        the server to find files with uppercase characters on case-sensitive or
+        case-preserving filesystems (like macOS/iOS and Linux).
+        """
+        # The filepath is used as-is to respect the original casing.
+        safe_filepath = filepath
 
-@app.route('/<filepath:path>')
-def server_static(filepath, root_path):
-    """Serve static files from the archive."""
-    if filepath.endswith('/'):
-        filepath += 'index.html'
-    elif not os.path.splitext(filepath)[1]:
-        if os.path.isfile(os.path.join(root_path, filepath)):
-            return static_file(filepath, root=root_path)
-        filepath = os.path.join(filepath, 'index.html')
-    return static_file(filepath, root=root_path)
+        full_path = os.path.join(self.root_path, safe_filepath)
+        if safe_filepath.endswith('/') or (os.path.exists(full_path) and os.path.isdir(full_path)):
+             safe_filepath = os.path.join(safe_filepath, 'index.html')
 
+        return static_file(safe_filepath, root=self.root_path)
 
-@app.route('/')
-def server_root(root_path):
-    """Serve the root index.html."""
-    return static_file('index.html', root=root_path)
+    def serve_root(self):
+        """Serve the root index.html."""
+        return self.serve_static('index.html')
 
+    def start(self, host='localhost', port=8080):
+        """Starts the web server."""
+        init_db(self.root_path)
+        print(f"Starting server for {self.root_path} on http://{host}:{port}")
+        run(self.app, host=host, port=port, quiet=False)
 
 def main():
     parser = argparse.ArgumentParser(description="Lightweight web server for browsing offline sites.")
@@ -94,20 +124,15 @@ def main():
     parser.add_argument('--port', type=int, default=8080, help="The port to run the server on.")
     args = parser.parse_args()
 
-    if not os.path.isdir(args.path):
-        print(f"Error: Directory not found at {args.path}")
-        return
+    logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-    app.config['root_path'] = args.path
-
-    app.route('/<filepath:path>')(lambda filepath: server_static(filepath, root_path=app.config['root_path']))
-    app.route('/')(lambda: server_root(root_path=app.config['root_path']))
-    app.get('/api/bookmarks')(lambda: get_bookmarks_api(root_path=app.config['root_path']))
-    app.post('/api/add_bookmark')(lambda: add_bookmark_api(root_path=app.config['root_path']))
-
-    print(f"Starting server for {args.path} on http://localhost:{args.port}")
-    run(app, host='localhost', port=args.port, quiet=True)
-
+    try:
+        server = ArchiveServer(root_path=args.path)
+        server.start(port=args.port)
+    except FileNotFoundError as e:
+        logging.error(f"Error: {e}. Please provide a valid path to an archived site.")
+    except Exception as e:
+        logging.error(f"Failed to start server: {e}")
 
 if __name__ == '__main__':
     main()
