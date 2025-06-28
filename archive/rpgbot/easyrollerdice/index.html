@@ -1,0 +1,48 @@
+<html>
+ <head>
+ </head>
+ <body>
+  <script language="JavaScript1.2">
+   window.location.replace('https:\/\/easyrollerdice.com\/?sscid=61k9_t4ozw')
+  </script>
+  <script>
+   document.addEventListener('DOMContentLoaded', () => {
+    const bookmarkBtn = document.createElement('button');
+    bookmarkBtn.textContent = 'Bookmark this Page';
+    bookmarkBtn.style.position = 'fixed';
+    bookmarkBtn.style.bottom = '10px';
+    bookmarkBtn.style.right = '10px';
+    bookmarkBtn.style.zIndex = '9999';
+    bookmarkBtn.style.padding = '10px';
+    bookmarkBtn.style.backgroundColor = '#007bff';
+    bookmarkBtn.style.color = 'white';
+    bookmarkBtn.style.border = 'none';
+    bookmarkBtn.style.borderRadius = '5px';
+    bookmarkBtn.style.cursor = 'pointer';
+    document.body.appendChild(bookmarkBtn);
+
+    bookmarkBtn.addEventListener('click', () => {
+        const pageTitle = document.title;
+        const pageUrl = window.location.pathname;
+        fetch('/api/add_bookmark', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ title: pageTitle, url: pageUrl }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                alert('Bookmark added!');
+            } else {
+                alert('Error: ' + (data.error || 'Could not add bookmark.'));
+            }
+        })
+        .catch(error => {
+            console.error('Error adding bookmark:', error);
+            alert('Failed to add bookmark.');
+        });
+    });
+});
+  </script>
+ </body>
+</html>

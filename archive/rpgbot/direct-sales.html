@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Advertise on rpgbot.net | Ezoic Direct Sales
+  </title>
+  <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" rel="stylesheet"/>
+  <script crossorigin="anonymous" src="https://kit.fontawesome.com/b064e4a587.js">
+  </script>
+  <script crossorigin="anonymous" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" src="https://code.jquery.com/jquery-3.6.0.min.js">
+  </script>
+  <script src="https://d3js.org/d3.v6.min.js">
+  </script>
+  <script crossorigin="anonymous" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js">
+  </script>
+  <script>
+   var onloadCallback = function() {
+				grecaptcha.render('g-recaptcha', {
+					'sitekey' : '6LePP9kaAAAAAPpQ5F_3r8wELTSsClouslvSoBlZ',
+					'theme': 'dark',
+					'expired-callback': expCallback
+				});
+			};
+			var expCallback = function() {
+				grecaptcha.reset();
+			};
+  </script>
+  <style>
+   .bar {
+                fill: #5f89ad;
+            }
+            .axis {
+                font-size: 13px;
+            }
+            .axisWhite {
+                color: white;
+            }
+            
+            .label {
+                font-size: 13px;
+            }
+            a {
+                text-decoration: none;
+            }
+            
+            
+            
+            
+            .rel {
+                position: relative;
+            }
+            .clip-shape {
+                transform: scaleX(1) scaleY(-1);
+                position: absolute;
+                bottom: 0; 
+                left: 0;
+                z-index: 0;
+                width: 100%;
+                height: 100%;
+            }
+            .overlay-stats {
+                z-index: 1;
+            }
+            .contact-card {
+                width: 28rem;
+                height: 14rem;
+                
+            }
+            .w-65 {
+                width: 65%;
+            }
+            .w-85 {
+                width: 85%;
+            }
+            .black-bg {
+                background-color: #333;
+            }
+            .circle-icon {
+                background: #f2f2f2;
+                width: 65px;
+                height: 65px;
+                border-radius: 50%;
+                text-align: center;
+                line-height: 65px;
+                vertical-align: middle;
+            }
+            .black-bg-header {
+                color: white;
+            }
+            .black-bg-lead {
+                color: lightgray;
+            }
+            .white-bg-lead {
+                color: gray;
+            }
+			 .display-3 {
+				font-size: calc(1.425rem + 3.3vw);
+				font-weight: 400;
+				line-height: 1.2;
+				word-wrap: break-word;
+			}
+            .badge {
+                display: inline-block;
+                padding: .55em .85em;
+                font-size: .75em;
+                font-weight: 700;
+                line-height: 1;
+                color: #fff;
+                text-align: center;
+                white-space: nowrap;
+                vertical-align: baseline;
+                border-radius: .25rem;
+                border-radius: 16px;
+            }
+            .btn.btn-primary, .btn.btn-primary:hover, .btn.btn-primary:focus, .btn.btn-primary.active {
+                color: #ffffff;
+                background-color: #03c900;
+                border-color: #03c900;
+                padding: 14px 20px 14px 20px;
+                text-shadow: 1px 1px 1px #9595957d;
+            }
+
+            .btn.btn-secondary, .btn.btn-secondary:hover, .btn.btn-secondary:focus, .btn.btn-secondary.active {
+                color: #ffffff;
+                background-color: #ef3054;
+                border-color: #ef3054;
+            }
+            input, textarea {
+                background-color:#333 !important;
+                color: #FFF !important;
+            }
+            img { 
+                max-width: 100%; 
+                height: auto; 
+            }
+            .about-ezoic {
+                color: white;
+            }
+            input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus {
+			  -webkit-text-fill-color: white;
+			  transition: background-color 5000s ease-in-out 0s;
+            }
+			#ref-domain-pie-chart, #browsers-pie-chart, #devices-pie-chart {
+				overflow: visible;
+			}
+            @media (max-width: 768px) {
+                .mobile-rounded-card {
+                    border-radius: 16px !important;
+                }
+            }
+
+            @media (max-width: 992px) {
+                .tablet-rounded-card-left {
+                    border-bottom-left-radius: 16px !important; 
+                    border-top-left-radius: 16px !important;
+                }
+                .tablet-rounded-card-right {
+                    border-bottom-right-radius: 16px !important; 
+                    border-top-right-radius: 16px !important; 
+                }
+                .tablet-card-shadow {
+                    box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175);
+                }
+				.tablet-w-95 {
+					width: 95%;
+				}
+            }
+
+            @media (min-width: 992px) {
+                .desktop-rounded-card-left {
+                    border-bottom-left-radius: 16px !important; 
+                    border-top-left-radius: 16px !important;
+                }
+                .desktop-rounded-card-right {
+                    border-bottom-right-radius: 16px !important; 
+                    border-top-right-radius: 16px !important; 
+                }
+                .desktop-card-shadow {
+                    box-shadow: 0 1rem 3rem rgba(0, 0, 0, .4);
+                }
+                .desktop-icon-hide {
+                    display: none;
+                }
+				.desktop-w-65 {
+					width: 65%;
+				}
+            }
+  </style>
+ </head>
+ <body class="w-100">
+  <nav class="navbar navbar-dark bg-dark">
+   <div class="container-fluid">
+    <a class="navbar-brand d-flex align-content-center" href="https://ezoic.com" target="_blank">
+     <img alt="" class="d-inline-block align-top" height="24" src="https://www.ezoic.com/wp-content/uploads/2021/04/ezoic-logo-small.png"/>
+    </a>
+    <div class="d-flex align-content-center">
+     <a href="#contact">
+      <i class="fas fa-question-circle fa-lg desktop-icon-hide about-ezoic">
+      </i>
+     </a>
+     <a class="d-none d-lg-block" href="#contact">
+      <span class="navbar-text ms-1">
+       Learn About Direct Sales Using Ezoic
+      </span>
+     </a>
+    </div>
+   </div>
+  </nav>
+  <div class="container-fluid g-0">
+   <div class="banner-container d-flex justify-content-center pt-5 rel">
+    <div class="desktop-w-65 tablet-w-95">
+     <h1 class="display-3 text-shadow text-center w-100">
+      RPGBOT.net
+     </h1>
+     <p class="lead text-shadow text-center w-100 mt-3">
+      Better players, better games.
+     </p>
+     <div class="d-flex flex-wrap g-0 mt-5">
+      <div class="flex-grow-1 align-self-end">
+       <span class="badge bg-light text-dark me-1 mb-sm-1 mb-1 mb-lg-0">
+        Hobbies &amp; Interests
+       </span>
+       <span class="badge bg-light text-dark me-1 mb-sm-1 mb-1 mb-lg-0">
+        Roleplaying Games
+       </span>
+      </div>
+      <a href="index.html" style="z-index: 5;">
+       <button class="btn btn-secondary mb-sm-1 mb-1 mb-lg-0" type="button">
+        <div class="d-flex align-content-center">
+         <div>
+          <i class="fas fa-external-link-alt">
+          </i>
+         </div>
+         <div class="ms-1">
+          rpgbot.net
+         </div>
+        </div>
+       </button>
+      </a>
+     </div>
+     <div class="w-100 rel overlay-stats">
+      <div class="row mt-2 m-auto desktop-rounded-card-left desktop-rounded-card-right desktop-card-shadow">
+       <div class="col-lg-3 col-md-6 col-sm-12 g-0 mb-3 mb-sm-3 mb-lg-0">
+        <div class="card text-center rounded-0 mobile-rounded-card tablet-rounded-card-left desktop-rounded-card-left h-100 w-100">
+         <div class="card-body">
+          <i class="fas fa-user-friends fa-2x circle-icon">
+          </i>
+          <h1 class="card-title" id="unique-visitors">
+          </h1>
+          <p class="card-text white-bg-lead">
+           Monthly Unique Visitors
+          </p>
+         </div>
+        </div>
+       </div>
+       <div class="col-lg-3 col-md-6 col-sm-12 g-0 mb-3 mb-sm-3 mb-lg-0">
+        <div class="card text-center rounded-0 mobile-rounded-card tablet-rounded-card-right h-100 w-100">
+         <div class="card-body">
+          <i class="fas fa-users fa-2x circle-icon">
+          </i>
+          <h1 class="card-title" id="pageviews">
+          </h1>
+          <p class="card-text white-bg-lead">
+           Monthly Page Views
+          </p>
+         </div>
+        </div>
+       </div>
+       <div class="col-lg-3 col-md-6 col-sm-12 g-0 mb-3 mb-sm-3 mb-lg-0">
+        <div class="card text-center rounded-0 mobile-rounded-card tablet-rounded-card-left h-100 w-100">
+         <div class="card-body">
+          <i class="fas fa-clock fa-2x circle-icon">
+          </i>
+          <h1 class="card-title" id="average-time-on-site">
+          </h1>
+          <p class="card-text white-bg-lead">
+           Average Time on Site
+          </p>
+         </div>
+        </div>
+       </div>
+       <div class="col-lg-3 col-md-6 col-sm-12 g-0 mb-3 mb-sm-3 mb-lg-0">
+        <div class="card text-center rounded-0 mobile-rounded-card tablet-rounded-card-right desktop-rounded-card-right h-100 w-100">
+         <div class="card-body">
+          <i class="fas fa-user-alt fa-2x circle-icon">
+          </i>
+          <h1 class="card-title" id="return-visitors-rate">
+          </h1>
+          <p class="card-text white-bg-lead">
+           Return Visitor Rate
+          </p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="clip-shape w-100 d-none d-lg-block d-flex">
+     <svg preserveaspectratio="none" viewbox="0 0 800 50">
+      <polygon fill="white" points="0,0 800,0 800,50 400,0 0,50">
+      </polygon>
+     </svg>
+    </div>
+   </div>
+   <div class="d-flex justify-content-center">
+    <div class="w-85 pb-5">
+     <div class="row align-items-center mt-5 m-auto">
+      <div class="col-lg-7 d-flex justify-content-center">
+       <div class="row">
+        <h1 class="display-6">
+         <i class="fas fa-info-circle me-2">
+         </i>
+         About RPGBOT.net
+        </h1>
+        <p class="lead white-bg-lead">
+         RPGBOT is a collection of free content, articles, online tools, and a podcast for tabletop roleplaying games. Famous for character optimization content, RPGBOT also provides deep analysis and workable solutions to difficult problems in the TTRPG space.
+        </p>
+       </div>
+      </div>
+      <div class="col-lg-5 d-flex justify-content-center">
+       <div class="card text-center shadow-lg">
+        <div class="card-body">
+         <h5 class="card-title">
+          Negotiate Direct Ad Deal
+         </h5>
+         <p class="card-text white-bg-lead">
+          Ready to advertise on rpgbot.net? Or would you like to speak with a member from Ezoic's direct sales team to find out more information?
+         </p>
+         <a href="#contact">
+          <button class="btn btn-primary btn-lg" type="button">
+           Speak with us today!
+           <i class="fas fa-arrow-right ps-2">
+           </i>
+          </button>
+         </a>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="d-flex justify-content-center black-bg">
+    <div class="w-85 pt-5 pb-5">
+     <div class="row m-auto">
+      <div class="col-lg-5 col-md-12 d-flex">
+       <div class="row d-flex h-100 w-100 align-items-center">
+        <div>
+         <h1 class="display-6 black-bg-header">
+          <i class="fas fa-users me-2">
+          </i>
+          Audience Highlights
+         </h1>
+         <p class="lead black-bg-lead">
+          Ezoic’s advanced targeting enables you to target the exact audience you are looking for across any website on our platform. Publishers can choose to target things like Google Organic Search, location, browser, device, cities, states, returning visitors, new visitors, and much more. Publishers can easily get insight into their audiences with in-depth analytics and use that data to target specific audiences.
+         </p>
+        </div>
+       </div>
+      </div>
+      <div class="col-lg-3 col-md-12 d-flex">
+       <div class="row d-flex h-100 w-100 align-items-start">
+        <div>
+         <p class="lead black-bg-header">
+          Pageviews per Traffic Source
+         </p>
+         <div id="ref-domain-pie-chart" style="width:auto; height: auto; ">
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="col-lg-4 col-md-12 d-flex">
+       <div class="row d-flex h-100 w-100 align-items-start">
+        <div>
+         <p class="lead black-bg-header">
+          Pageviews per Country
+         </p>
+         <div id="countries-bar-chart" style="width:auto; height: auto; ">
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="d-flex justify-content-center">
+    <div class="w-85 pt-5 pb-5">
+     <div class="row align-items-center m-auto">
+      <div class="col-lg-3 col-md-12 d-flex">
+       <div class="row d-flex h-100 w-100 align-items-start">
+        <div>
+         <p class="lead">
+          Pageviews per Browser
+         </p>
+         <div id="browsers-pie-chart" style="width:auto; height: auto;">
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="col-lg-3 col-md-12 d-flex">
+       <div class="row d-flex h-100 w-100 align-items-start">
+        <div>
+         <p class="lead">
+          Pageviews per Device
+         </p>
+         <div id="devices-pie-chart" style="width:auto; height: auto;">
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="col-lg-6 col-md-12 d-flex">
+       <div class="row">
+        <div class="row d-flex h-100 w-100 align-items-center">
+         <div>
+          <h1 class="display-6">
+           <i class="fas fa-desktop me-2">
+           </i>
+           Website Technology Highlights
+          </h1>
+          <p class="lead white-bg-lead">
+           Ezoic’s advanced segmentation allows direct advertisers to target website visitors to rpgbot.net, based on the type of technology they are using to browse the website.
+          </p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="d-flex justify-content-center black-bg">
+    <div class="w-85 pt-5 pb-5">
+     <div class="row align-items-center m-auto">
+      <div class="col-lg-7 d-flex justify-content-center">
+       <div class="row">
+        <h1 class="display-6 black-bg-header">
+         <img class="me-2" src="https://www.ezoic.com/wp-content/uploads/2023/04/ezoic-transparent-white-logo.webp" style="height: 40px"/>
+         Individualized Ad Experiences Using Ezoic Technology
+        </h1>
+        <p class="lead black-bg-lead">
+         Ezoic is a powerful machine-learning platform that can deliver viewable, high-quality ads at scale across a network of trusted publishers. Ezoic uses artificial intelligence to dynamically control ad locations, sizes, colors, types, and more, and adapts in real-time to individual visitor preferences, i.e, need more 970x260's in Sweden? Ezoic can adapt existing placements to meet those needs. This technology provides websites with a higher CTR, click quality, and viewability based on present demographics and look-alike user behavior. Ezoic optimizes for user experience and revenue simultaneously through artificial intelligence, ensuring that users aren’t experiencing websites filled with ads and creating ad blindness, which ultimately earns publishers less money. Ezoic contains thousands of diverse publishers on our platform, which allows us to cover almost every category and vertical for advertisers.
+        </p>
+       </div>
+      </div>
+      <div class="col-lg-5 d-flex justify-content-center">
+       <img src="https://www.ezoic.com/wp-content/uploads/2023/04/ad-visitor-ezoic-gif.gif" width="500px">
+       </img>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="d-flex justify-content-center">
+    <div class="w-85 pt-5 pb-5">
+     <h1 class="display-6 text-center">
+      Popular Ad Inventory Segments
+     </h1>
+     <div class="row justify-content-md-center mt-4">
+      <div class="col-lg-3 col-md-6 col-sm-12 mb-3 mb-sm-3 mb-lg-0 d-flex justify-content-center">
+       <div class="card text-center shadow-sm h-100 w-100">
+        <div class="card-body">
+         <i class="fas fa-eye fa-2x circle-icon">
+         </i>
+         <h4>
+          High Viewability
+         </h4>
+         <p class="card-text white-bg-lead">
+          Target ad placements with 70% or greater average viewability.
+         </p>
+        </div>
+       </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-12 mb-3 mb-sm-3 mb-lg-0 d-flex justify-content-center">
+       <div class="card text-center shadow-sm h-100 w-100">
+        <div class="card-body">
+         <i class="fas fa-mouse-pointer fa-2x circle-icon">
+         </i>
+         <h4>
+          High CTR
+         </h4>
+         <p class="card-text white-bg-lead">
+          Focus on ad placements with high click-through rates.
+         </p>
+        </div>
+       </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-12 mb-3 mb-sm-3 mb-lg-0 d-flex justify-content-center">
+       <div class="card text-center shadow-sm h-100 w-100">
+        <div class="card-body">
+         <i class="fas fa-user-clock fa-2x circle-icon">
+         </i>
+         <h4>
+          High Engagement
+         </h4>
+         <p class="card-text white-bg-lead">
+          Target ad placements on pages with high level of user engagement scores.
+         </p>
+        </div>
+       </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-12 mb-3 mb-sm-3 mb-lg-0 d-flex justify-content-center">
+       <div class="card text-center shadow-sm h-100 w-100">
+        <div class="card-body">
+         <i class="fas fa-wrench fa-2x circle-icon">
+         </i>
+         <h4>
+          Custom Segment
+         </h4>
+         <p class="card-text white-bg-lead">
+          Customized for your individual ad targeting needs.
+         </p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="d-flex justify-content-center black-bg" id="contact">
+    <div class="desktop-w-65 tablet-w-95 pt-5 pb-3">
+     <h1 class="display-6 text-center black-bg-header mb-3">
+      Ready to get your campaign live on rpgbot.net?
+      <br/>
+      Or would you like to learn more? Contact Us!
+     </h1>
+     <form method="POST">
+      <div class="row mb-3">
+       <div class="form-group">
+        <label class="black-bg-lead" for="name-input">
+         Name
+        </label>
+        <input class="form-control" id="name-input" name="contact-name" type="text"/>
+       </div>
+      </div>
+      <div class="row mb-3">
+       <div class="form-group">
+        <label class="black-bg-lead" for="email-input">
+         Email
+        </label>
+        <input class="form-control" id="email-input" name="contact-email" type="email"/>
+       </div>
+      </div>
+      <div class="row mb-3">
+       <div class="form-group">
+        <label class="black-bg-lead" for="phone-input">
+         Phone
+        </label>
+        <input class="form-control" id="phone-input" name="contact-phone" type="text"/>
+       </div>
+      </div>
+      <div class="row mb-3">
+       <div class="form-group">
+        <label class="black-bg-lead" for="contact-website">
+         Website
+        </label>
+        <input class="form-control" id="contact-website" name="contact-website" type="text"/>
+       </div>
+      </div>
+      <div class="row mb-3">
+       <div class="form-group">
+        <label class="black-bg-lead" for="contact-platform">
+         I am a(n)
+        </label>
+        <select aria-label="Default select example" class="form-select" id="contact-platform" name="contact-platform" style="background-color: #333; color: lightgray;">
+         <option selected="">
+          Ad Network
+         </option>
+         <option value="Agency">
+          Agency
+         </option>
+         <option value="Individual Advertiser">
+          Individual Advertiser
+         </option>
+         <option value="Demand Side Platform">
+          Demand Side Platform
+         </option>
+         <option value="Supply Side Platform">
+          Supply Side Platform
+         </option>
+         <option value="Ad Platform">
+          Ad Platform
+         </option>
+         <option value="Other">
+          Other
+         </option>
+        </select>
+       </div>
+      </div>
+      <div class="row mb-3">
+       <div class="form-group">
+        <label class="black-bg-lead" for="contact-budget">
+         My budget is
+        </label>
+        <select aria-label="Default select example" class="form-select" id="contact-budget" name="contact-budget" style="background-color: #333; color: lightgray;">
+         <option selected="">
+          $100,000+ or more
+         </option>
+         <option value="$50,000-$100,000">
+          $50,000-$100,000
+         </option>
+         <option value="$10,000-$50,000">
+          $10,000-$50,000
+         </option>
+         <option value="$2,500-$10,000">
+          $2,500-$10,000
+         </option>
+         <option value="$500-$2,500">
+          $500-$2,500
+         </option>
+         <option value="Less than $500">
+          Less than $500
+         </option>
+        </select>
+       </div>
+      </div>
+      <div class="row mb-3">
+       <div class="form-group">
+        <label class="black-bg-lead" for="contact-adtype">
+         Interested in
+        </label>
+        <select aria-label="Default select example" class="form-select" id="contact-adtype" multiple="" name="contact-adtype" style="background-color: #333; color: lightgray;">
+         <option value="Banner Ads">
+          Banner Ads
+         </option>
+         <option value="Video Ads">
+          Video Ads
+         </option>
+         <option value="Sponsored Posts">
+          Sponsored Posts
+         </option>
+         <option value="Other">
+          Other
+         </option>
+        </select>
+       </div>
+      </div>
+      <div class="row mb-3">
+       <div class="form-group">
+        <label class="black-bg-lead" for="contact-message">
+         Message
+        </label>
+        <textarea class="form-control" id="contact-message" name="contact-message" rows="5"></textarea>
+       </div>
+      </div>
+      <div class="row d-flex justify-content-end mb-3">
+       <div id="g-recaptcha">
+       </div>
+      </div>
+      <div class="row mb-3">
+       <div class="d-grid form-group">
+        <button class="btn btn-primary btn-lg" type="submit">
+         Send Message
+        </button>
+       </div>
+      </div>
+     </form>
+     <script async="" defer="" src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&amp;render=explicit">
+     </script>
+    </div>
+   </div>
+  </div>
+  <script>
+   document.addEventListener('DOMContentLoaded', () => {
+    const bookmarkBtn = document.createElement('button');
+    bookmarkBtn.textContent = 'Bookmark this Page';
+    bookmarkBtn.style.position = 'fixed';
+    bookmarkBtn.style.bottom = '10px';
+    bookmarkBtn.style.right = '10px';
+    bookmarkBtn.style.zIndex = '9999';
+    bookmarkBtn.style.padding = '10px';
+    bookmarkBtn.style.backgroundColor = '#007bff';
+    bookmarkBtn.style.color = 'white';
+    bookmarkBtn.style.border = 'none';
+    bookmarkBtn.style.borderRadius = '5px';
+    bookmarkBtn.style.cursor = 'pointer';
+    document.body.appendChild(bookmarkBtn);
+
+    bookmarkBtn.addEventListener('click', () => {
+        const pageTitle = document.title;
+        const pageUrl = window.location.pathname;
+        fetch('/api/add_bookmark', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ title: pageTitle, url: pageUrl }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                alert('Bookmark added!');
+            } else {
+                alert('Error: ' + (data.error || 'Could not add bookmark.'));
+            }
+        })
+        .catch(error => {
+            console.error('Error adding bookmark:', error);
+            alert('Failed to add bookmark.');
+        });
+    });
+});
+  </script>
+ </body>
+</html>
+<script>
+ $( document ).ready(function() {
+	if ( window.history.replaceState ) {
+	  window.history.replaceState( null, null, window.location.href );
+	}
+	if ($(".toast")[0]){
+		$(".toast").toast('show');
+	}
+
+	var bg_color = '#' + "EEEEEE";
+	if (bg_color != "") {
+		$(".banner-container").css("background-color", bg_color);
+	} else {
+		$(".banner-container").css("background-color", "#5fa624");
+	}
+
+	var headingTextColor = '#' + "222222"
+
+	$(".text-shadow").css("color", headingTextColor);
+
+	if (headingTextColor == "#000000") {
+		$(".text-shadow").css("text-shadow", "1px 1px 1px #FFFFFF");
+	} else {
+		$(".text-shadow").css("text-shadow", "1px 1px 1px #000000");
+	}
+
+	function fmtMSS(s){return(s-(s%=60))/60+(9<s?':':':0')+s}
+
+	var monthlyUniqueVisitors =  813552 
+	var monthlyPageviews =  1643412 
+	var averageTimeOnSite =  469 
+	var returnVisitorsRate =  39.637909 
+	returnVisitorsRate = +returnVisitorsRate.toFixed(2);
+	$("#unique-visitors").text(monthlyUniqueVisitors.toLocaleString());
+	$("#pageviews").text(monthlyPageviews.toLocaleString());
+	$("#average-time-on-site").text(fmtMSS(averageTimeOnSite));
+	$("#return-visitors-rate").text(returnVisitorsRate + "%");
+
+	
+	var countryData = [{"Country":"US","Pageviews":910024},{"Country":"GB","Pageviews":126612},{"Country":"CA","Pageviews":117056},{"Country":"AU","Pageviews":63249},{"Country":"DE","Pageviews":59049}] || [];
+	countryData = countryData.sort(function (a, b) {
+		return d3.ascending(a.Pageviews, b.Pageviews);
+	});
+    var margin = {
+            top: 25,
+            right: 65,
+            bottom: 15,
+            left: 60
+    };
+	var origWidth = 500;
+	var origHeight = 350;
+
+    var width = 500 - margin.left - margin.right,
+        height = 350 - margin.top - margin.bottom;
+
+    var y = d3.scaleBand()
+          .range([height, 0])
+          .padding(0.1);
+
+    var x = d3.scaleLinear()
+          .range([0, width]);
+
+    var svg = d3.select("#countries-bar-chart").append("svg")
+		.attr("width", '100%')
+		.attr("height", '100%')
+		.attr('viewBox','0 0 '+ origWidth +' '+origHeight )
+        .append("g")
+		.attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+
+    x.domain([0, d3.max(countryData, function(d){ return d.Pageviews; })])
+    y.domain(countryData.map(function(d) { return d.Country; }));
+
+    var bars = svg.selectAll(".bar")
+        .data(countryData)
+        .enter()
+        .append("g")
+    
+    bars.append("rect")
+      .attr("class", "bar")
+      .attr("width", function(d) {return x(d.Pageviews); } )
+      .attr("y", function(d) { return y(d.Country); })
+      .attr("height", y.bandwidth());
+
+    svg.append("g")
+		.attr("class", "axisWhite")
+        .call(d3.axisLeft(y));
+
+    bars.append("text")
+        .attr("class", "label")
+        .attr("y", function (d) {
+            return y(d.Country) + y.bandwidth() / 2 + 4;
+        })
+        .attr("x", function (d) {
+            return x(d.Pageviews) + 3;
+        })
+        .text(function (d) {
+            return d.Pageviews.toLocaleString();
+        })
+		.attr("fill", "white");
+
+    
+    
+    
+    
+    
+    
+	
+	
+
+
+
+	var rawRefDomainData = [{"ReferringDomain":"google.com","Pageviews":1037710},{"ReferringDomain":"rpgbot.net","Pageviews":467393},{"ReferringDomain":"bing.com","Pageviews":46212},{"ReferringDomain":"duckduckgo.com","Pageviews":43193},{"ReferringDomain":"reddit.com","Pageviews":8451},{"ReferringDomain":"yahoo.com","Pageviews":7397},{"ReferringDomain":"ecosia.org","Pageviews":5497},{"ReferringDomain":"google.ca","Pageviews":3958},{"ReferringDomain":"google.co.uk","Pageviews":3414},{"ReferringDomain":"android.googlequicksearchbox","Pageviews":2386},{"ReferringDomain":"reddit.frontpage","Pageviews":2343},{"ReferringDomain":"zenithgames.blogspot.com","Pageviews":2302},{"ReferringDomain":"google.com.au","Pageviews":1574},{"ReferringDomain":"google.de","Pageviews":1109},{"ReferringDomain":"facebook.com","Pageviews":903},{"ReferringDomain":"brave.com","Pageviews":707},{"ReferringDomain":"google.it","Pageviews":486},{"ReferringDomain":"google.com.br","Pageviews":481},{"ReferringDomain":"msn.com","Pageviews":459},{"ReferringDomain":"google.nl","Pageviews":350},{"ReferringDomain":"qwant.com","Pageviews":337},{"ReferringDomain":"google.se","Pageviews":302},{"ReferringDomain":"youngdragonslayers.com","Pageviews":268},{"ReferringDomain":"google.fr","Pageviews":255},{"ReferringDomain":"google.dk","Pageviews":255},{"ReferringDomain":"yandex.ru","Pageviews":245},{"ReferringDomain":"instagram.com","Pageviews":215},{"ReferringDomain":"google.com.hk","Pageviews":183},{"ReferringDomain":"google.es","Pageviews":175},{"ReferringDomain":"google.be","Pageviews":174},{"ReferringDomain":"google.at","Pageviews":147},{"ReferringDomain":"chatgpt.com","Pageviews":145},{"ReferringDomain":"google.co.th","Pageviews":135},{"ReferringDomain":"google.co.nz","Pageviews":131},{"ReferringDomain":"google.no","Pageviews":127},{"ReferringDomain":"google.ch","Pageviews":121},{"ReferringDomain":"dndbeyond.com","Pageviews":119},{"ReferringDomain":"android.gm","Pageviews":118},{"ReferringDomain":"t.co","Pageviews":117},{"ReferringDomain":"google.com.tr","Pageviews":115},{"ReferringDomain":"microsoft.com","Pageviews":112},{"ReferringDomain":"oceanhero.today","Pageviews":105},{"ReferringDomain":"google.com.sg","Pageviews":104},{"ReferringDomain":"bsky.app","Pageviews":103},{"ReferringDomain":"google.fi","Pageviews":96},{"ReferringDomain":"google.hu","Pageviews":95},{"ReferringDomain":"google.pl","Pageviews":87},{"ReferringDomain":"google.com.ph","Pageviews":82},{"ReferringDomain":"translate.goog","Pageviews":74},{"ReferringDomain":"ya.ru","Pageviews":70},{"ReferringDomain":"google.pt","Pageviews":69},{"ReferringDomain":"google.co.za","Pageviews":68},{"ReferringDomain":"google.ie","Pageviews":65},{"ReferringDomain":"youtube.com","Pageviews":65},{"ReferringDomain":"office.net","Pageviews":60},{"ReferringDomain":"roll20.net","Pageviews":60},{"ReferringDomain":"com.pinterest","Pageviews":60},{"ReferringDomain":"google.co.jp","Pageviews":59},{"ReferringDomain":"startpage.com","Pageviews":58},{"ReferringDomain":"google.com.vn","Pageviews":54},{"ReferringDomain":"google.gr","Pageviews":53},{"ReferringDomain":"google.com.mx","Pageviews":46},{"ReferringDomain":"threads.com","Pageviews":46},{"ReferringDomain":"steamcommunity.com","Pageviews":44},{"ReferringDomain":"giantitp.com","Pageviews":43},{"ReferringDomain":"google.co.il","Pageviews":39},{"ReferringDomain":"google.co.id","Pageviews":39},{"ReferringDomain":"google.com.co","Pageviews":38},{"ReferringDomain":"google.ru","Pageviews":38},{"ReferringDomain":"google.com.my","Pageviews":38},{"ReferringDomain":"perplexity.ai","Pageviews":37},{"ReferringDomain":"yandex.by","Pageviews":36},{"ReferringDomain":"rpg.net","Pageviews":36},{"ReferringDomain":"yandex.com.tr","Pageviews":34},{"ReferringDomain":"snapchat.com","Pageviews":32},{"ReferringDomain":"google.cl","Pageviews":32},{"ReferringDomain":"google.com.ar","Pageviews":30},{"ReferringDomain":"deltayp.com","Pageviews":29},{"ReferringDomain":"google.co.kr","Pageviews":29},{"ReferringDomain":"google.com.ua","Pageviews":28},{"ReferringDomain":"namu.wiki","Pageviews":27},{"ReferringDomain":"yandex.kz","Pageviews":27},{"ReferringDomain":"google.com.pe","Pageviews":26},{"ReferringDomain":"google.ro","Pageviews":26},{"ReferringDomain":"dogpile.com","Pageviews":24},{"ReferringDomain":"google.sk","Pageviews":24},{"ReferringDomain":"pinterest.com","Pageviews":22},{"ReferringDomain":"presearch.com","Pageviews":22},{"ReferringDomain":"wikidot.com","Pageviews":21},{"ReferringDomain":"google.cz","Pageviews":21},{"ReferringDomain":"humix.com","Pageviews":21},{"ReferringDomain":"yandex.com","Pageviews":19},{"ReferringDomain":"google.com.tw","Pageviews":19},{"ReferringDomain":"telegram.org","Pageviews":19},{"ReferringDomain":"naver.com","Pageviews":18},{"ReferringDomain":"awesomedice.com","Pageviews":17},{"ReferringDomain":"dnd-compendium.com","Pageviews":16},{"ReferringDomain":"messenger.com","Pageviews":14},{"ReferringDomain":"polygon.com","Pageviews":14},{"ReferringDomain":"deepseek.com","Pageviews":14},{"ReferringDomain":"google.co.in","Pageviews":13},{"ReferringDomain":"koboldthinktank.site","Pageviews":13},{"ReferringDomain":"google.lt","Pageviews":13},{"ReferringDomain":"claude.ai","Pageviews":12},{"ReferringDomain":"5esrd.com","Pageviews":12},{"ReferringDomain":"feedspot.com","Pageviews":11},{"ReferringDomain":"duckdns.org","Pageviews":10},{"ReferringDomain":"o.joey","Pageviews":9},{"ReferringDomain":"google.by","Pageviews":9},{"ReferringDomain":"yahoo.co.jp","Pageviews":9},{"ReferringDomain":"8.229","Pageviews":9},{"ReferringDomain":"goddessfantasy.net","Pageviews":8},{"ReferringDomain":"tiktok.com","Pageviews":8},{"ReferringDomain":"qq.com","Pageviews":8},{"ReferringDomain":"asuscomm.com","Pageviews":8},{"ReferringDomain":"google.rs","Pageviews":8},{"ReferringDomain":"google.com.uy","Pageviews":7},{"ReferringDomain":"newtab","Pageviews":7},{"ReferringDomain":"privacywall.org","Pageviews":7},{"ReferringDomain":"inboxpounds.co.uk","Pageviews":7},{"ReferringDomain":"com.slack","Pageviews":7},{"ReferringDomain":"obsidian.md","Pageviews":7},{"ReferringDomain":"ezoic.com","Pageviews":7},{"ReferringDomain":"tvtropes.org","Pageviews":7},{"ReferringDomain":"mightytechy.com","Pageviews":6},{"ReferringDomain":"aol.com","Pageviews":6},{"ReferringDomain":"open.video","Pageviews":6},{"ReferringDomain":"offidocs.com","Pageviews":6},{"ReferringDomain":"dicecloud.com","Pageviews":6},{"ReferringDomain":"jeuxvideo.com","Pageviews":6},{"ReferringDomain":"karmasearch.org","Pageviews":6},{"ReferringDomain":"133.89","Pageviews":5},{"ReferringDomain":"pf2eforbeginners.com","Pageviews":5},{"ReferringDomain":"gamer.com.tw","Pageviews":5},{"ReferringDomain":"kenobit.it","Pageviews":4},{"ReferringDomain":"localhost","Pageviews":4},{"ReferringDomain":"imwan.com","Pageviews":4},{"ReferringDomain":"gsearch.co","Pageviews":4},{"ReferringDomain":"searchlock.com","Pageviews":4},{"ReferringDomain":"wordpress.com","Pageviews":4},{"ReferringDomain":"cloud.microsoft","Pageviews":4},{"ReferringDomain":"fm.player","Pageviews":4},{"ReferringDomain":"black-book-editions.fr","Pageviews":4},{"ReferringDomain":"att.net","Pageviews":4},{"ReferringDomain":"larian.com","Pageviews":4},{"ReferringDomain":"fancyme.ai","Pageviews":3},{"ReferringDomain":"thegamer.com","Pageviews":3},{"ReferringDomain":"google.com.pr","Pageviews":3},{"ReferringDomain":"dtf.ru","Pageviews":3},{"ReferringDomain":"flashfiletool.com","Pageviews":3},{"ReferringDomain":"gprivate.com","Pageviews":3},{"ReferringDomain":"raindrop.io","Pageviews":3},{"ReferringDomain":"scrollforinitiative.com","Pageviews":3},{"ReferringDomain":"enworld.org","Pageviews":3},{"ReferringDomain":"seznam.cz","Pageviews":3},{"ReferringDomain":"dungeonmastering.com","Pageviews":3},{"ReferringDomain":"evernote.com","Pageviews":3},{"ReferringDomain":"pootw.com","Pageviews":3},{"ReferringDomain":"doktox.com","Pageviews":3},{"ReferringDomain":"simplefinder.co","Pageviews":3},{"ReferringDomain":"wargamer.com","Pageviews":2},{"ReferringDomain":"swisscows.com","Pageviews":2},{"ReferringDomain":"meta.com","Pageviews":2},{"ReferringDomain":"catholic.edu.au","Pageviews":2},{"ReferringDomain":"messengerindir.org","Pageviews":2},{"ReferringDomain":"1.37","Pageviews":2},{"ReferringDomain":"ubersear.ch","Pageviews":2},{"ReferringDomain":"nerdcoledi.it","Pageviews":2},{"ReferringDomain":"pch.com","Pageviews":2},{"ReferringDomain":"dscryb.com","Pageviews":2},{"ReferringDomain":"superherojacked.com","Pageviews":2},{"ReferringDomain":"questportal.com","Pageviews":2},{"ReferringDomain":"gosrch.co","Pageviews":2},{"ReferringDomain":"laurencedawson.reddit_sync","Pageviews":2},{"ReferringDomain":"dynamitedojo.com","Pageviews":2},{"ReferringDomain":"87.129","Pageviews":2},{"ReferringDomain":"www.tumblr.com","Pageviews":2},{"ReferringDomain":"newstrend.in","Pageviews":2},{"ReferringDomain":"picsstyle.com","Pageviews":2},{"ReferringDomain":"dcinside.com","Pageviews":2},{"ReferringDomain":"google.com.ec","Pageviews":2},{"ReferringDomain":"google.ae","Pageviews":2},{"ReferringDomain":"search.app","Pageviews":2},{"ReferringDomain":"live.com","Pageviews":2},{"ReferringDomain":"ennie-awards.com","Pageviews":2},{"ReferringDomain":"itch.io","Pageviews":2},{"ReferringDomain":"tocadocoruja.com","Pageviews":2},{"ReferringDomain":"slimbrowser.org","Pageviews":2},{"ReferringDomain":"workona.com","Pageviews":2},{"ReferringDomain":"scribd.com","Pageviews":2},{"ReferringDomain":"comunidadumbria.com","Pageviews":2},{"ReferringDomain":"221.121","Pageviews":2},{"ReferringDomain":"radolyn.ayugram","Pageviews":2},{"ReferringDomain":"salesforce.com","Pageviews":1},{"ReferringDomain":"coccoc.com","Pageviews":1},{"ReferringDomain":"tapnav.com","Pageviews":1},{"ReferringDomain":"patreon.com","Pageviews":1},{"ReferringDomain":"artfight.net","Pageviews":1},{"ReferringDomain":"str-search.com","Pageviews":1},{"ReferringDomain":"google.bg","Pageviews":1},{"ReferringDomain":"github.io","Pageviews":1},{"ReferringDomain":"homebrewandhacking.com","Pageviews":1},{"ReferringDomain":"afterdarkmode.net","Pageviews":1},{"ReferringDomain":"allinonebdcircular.com","Pageviews":1},{"ReferringDomain":"google.co.uz","Pageviews":1},{"ReferringDomain":"inbrowserapp.com","Pageviews":1},{"ReferringDomain":"4chan.org","Pageviews":1},{"ReferringDomain":"newjobideas.net","Pageviews":1},{"ReferringDomain":"newsblur.com","Pageviews":1},{"ReferringDomain":"stackexchange.com","Pageviews":1},{"ReferringDomain":"easysearcher.co","Pageviews":1},{"ReferringDomain":"czepeku.com","Pageviews":1},{"ReferringDomain":"shoptopics.co","Pageviews":1},{"ReferringDomain":"discord.com","Pageviews":1},{"ReferringDomain":"linktr.ee","Pageviews":1},{"ReferringDomain":"telegram.messenger","Pageviews":1},{"ReferringDomain":"quinnipiac.edu","Pageviews":1},{"ReferringDomain":"topezz.com","Pageviews":1},{"ReferringDomain":"baidu.com","Pageviews":1},{"ReferringDomain":"imgur.com","Pageviews":1},{"ReferringDomain":"5ch.net","Pageviews":1},{"ReferringDomain":"heartland.us","Pageviews":1},{"ReferringDomain":"google.si","Pageviews":1},{"ReferringDomain":"wwnorton.com","Pageviews":1},{"ReferringDomain":"redirect.systems","Pageviews":1},{"ReferringDomain":"177.89","Pageviews":1},{"ReferringDomain":"metaso.cn","Pageviews":1},{"ReferringDomain":"netflix.com","Pageviews":1},{"ReferringDomain":"whatsapp.com","Pageviews":1},{"ReferringDomain":"ahrefs.com","Pageviews":1},{"ReferringDomain":"quora.com","Pageviews":1},{"ReferringDomain":"contentcontroller.com","Pageviews":1},{"ReferringDomain":"vercel.app","Pageviews":1},{"ReferringDomain":"just-work.ru","Pageviews":1},{"ReferringDomain":"google.com.np","Pageviews":1},{"ReferringDomain":"boardalert.in","Pageviews":1},{"ReferringDomain":"google.com.bo","Pageviews":1},{"ReferringDomain":"qiwikoshelek-gid.ru","Pageviews":1},{"ReferringDomain":"groupbuytools.com","Pageviews":1},{"ReferringDomain":"inputoutput.io","Pageviews":1},{"ReferringDomain":"fefe.de","Pageviews":1},{"ReferringDomain":"google.lu","Pageviews":1},{"ReferringDomain":"google.as","Pageviews":1},{"ReferringDomain":"xvideoz.top","Pageviews":1},{"ReferringDomain":"224.71","Pageviews":1},{"ReferringDomain":"phantomplayshift.top","Pageviews":1},{"ReferringDomain":"google.is","Pageviews":1},{"ReferringDomain":"google.com.sv","Pageviews":1},{"ReferringDomain":"vk.com","Pageviews":1},{"ReferringDomain":"spacebattles.com","Pageviews":1},{"ReferringDomain":"sikmontessorimaterial.com","Pageviews":1},{"ReferringDomain":"qwen.ai","Pageviews":1},{"ReferringDomain":"gstatic.com","Pageviews":1},{"ReferringDomain":"groupme.com","Pageviews":1},{"ReferringDomain":"ilabsolutions.com","Pageviews":1},{"ReferringDomain":"joinmastodon.android","Pageviews":1},{"ReferringDomain":"google.com.ni","Pageviews":1},{"ReferringDomain":"activtrak.com","Pageviews":1},{"ReferringDomain":"google.com.pa","Pageviews":1},{"ReferringDomain":"reddit_sync.pro","Pageviews":1},{"ReferringDomain":"nov.com","Pageviews":1},{"ReferringDomain":"centurylink.net","Pageviews":1},{"ReferringDomain":"letgoindir.biz","Pageviews":1},{"ReferringDomain":"ge.com","Pageviews":1},{"ReferringDomain":"ggadsense.com","Pageviews":1},{"ReferringDomain":"meuikcr.online","Pageviews":1},{"ReferringDomain":"subebul.net","Pageviews":1},{"ReferringDomain":"impruvu.io","Pageviews":1},{"ReferringDomain":"429047995","Pageviews":1},{"ReferringDomain":"fasturduhub.com","Pageviews":1},{"ReferringDomain":"archiveofourown.org","Pageviews":1},{"ReferringDomain":"yandex.eu","Pageviews":1},{"ReferringDomain":"dailybillboard.com","Pageviews":1},{"ReferringDomain":"ekoru.org","Pageviews":1},{"ReferringDomain":"iptvxtreamcodes.com","Pageviews":1},{"ReferringDomain":"roblox.com","Pageviews":1},{"ReferringDomain":"zt4.top","Pageviews":1},{"ReferringDomain":"bio-pedia.com","Pageviews":1}] || [];
+	var refDomainDataGrouped = [];
+	var refDomainData = [];
+	var otherRefDomainSum = 0;
+	var googleSum = 0;
+	var bingSum = 0;
+	var yahooSum = 0;
+	var facebookSum = 0;
+	for (var i = 0; i < rawRefDomainData.length; i++) {
+		if (rawRefDomainData[i].ReferringDomain.includes("google")) {
+			googleSum += rawRefDomainData[i].Pageviews;
+		} else if (rawRefDomainData[i].ReferringDomain.includes("bing")) {
+			bingSum += rawRefDomainData[i].Pageviews;
+		} else if (rawRefDomainData[i].ReferringDomain.includes("yahoo")) {
+			yahooSum += rawRefDomainData[i].Pageviews;			
+		} else if (rawRefDomainData[i].ReferringDomain.includes("facebook")) {
+			facebookSum += rawRefDomainData[i].Pageviews;
+		} else {
+			refDomainDataGrouped.push(rawRefDomainData[i]);
+		}
+	}
+	refDomainDataGrouped.push({'ReferringDomain': 'google.com', 'Pageviews': googleSum});
+	refDomainDataGrouped.push({'ReferringDomain': 'bing.com', 'Pageviews': bingSum});
+	refDomainDataGrouped.push({'ReferringDomain': 'yahoo.com', 'Pageviews': yahooSum});
+	refDomainDataGrouped.push({'ReferringDomain': 'facebook.com', 'Pageviews': facebookSum});
+
+	refDomainDataGrouped = refDomainDataGrouped.sort(function (a, b) {
+		return d3.descending(a.Pageviews, b.Pageviews);
+	});
+	
+	var totalRefDomainData = 0;
+	for (var i = 0; i < refDomainDataGrouped.length; i++) {
+		if (i <= 4) {
+			if (refDomainDataGrouped[i].ReferringDomain === "rpgbot.net") {
+				refDomainDataGrouped[i].ReferringDomain = 'Direct';
+			}
+			refDomainData[i] = refDomainDataGrouped[i];
+		} else {
+			otherRefDomainSum += refDomainDataGrouped[i].Pageviews;
+		}
+		totalRefDomainData += refDomainDataGrouped[i].Pageviews;
+	}
+	refDomainData.push({'ReferringDomain': 'Other', 'Pageviews': otherRefDomainSum});
+
+	
+
+
+    var rawBrowsersData = [{"Browser":"Chrome","Pageviews":966897},{"Browser":"Safari","Pageviews":440955},{"Browser":"Firefox","Pageviews":95605},{"Browser":"IE","Pageviews":83441},{"Browser":"Samsung","Pageviews":30817},{"Browser":"Opera","Pageviews":19686},{"Browser":"Unknown","Pageviews":1775},{"Browser":"Silk","Pageviews":1690},{"Browser":"YahooBot","Pageviews":1403},{"Browser":"FBApp","Pageviews":792},{"Browser":"Yandex","Pageviews":286},{"Browser":"QQ","Pageviews":25},{"Browser":"Android","Pageviews":18},{"Browser":"UCBrowser","Pageviews":15},{"Browser":"FacebookBot","Pageviews":5},{"Browser":"Nintendo","Pageviews":2}] || [];
+	rawBrowsersData = rawBrowsersData.sort(function (a, b) {
+		return d3.descending(a.Pageviews, b.Pageviews);
+	});
+	browsersData = [];
+	otherBrowsersSum = 0;
+	var totalBrowsersData = 0;
+	for (var i = 0; i < rawBrowsersData.length; i++) {
+		if (i <= 4) {
+			browsersData[i] = rawBrowsersData[i];
+		} else {
+			otherBrowsersSum += rawBrowsersData[i].Pageviews;
+		}
+		totalBrowsersData += rawBrowsersData[i].Pageviews;
+	}
+	browsersData.push({'Browser': 'Other', 'Pageviews': otherBrowsersSum});
+	
+	var formFactorData = [{"FormFactor":"Mobile","Pageviews":1076849},{"FormFactor":"Desktop","Pageviews":545303},{"FormFactor":"Tablet","Pageviews":21260}] || [];
+	var totalFormFactorData = 0;
+	for (var i = 0; i < formFactorData.length; i++) { 
+		totalFormFactorData += formFactorData[i].Pageviews;
+	}
+
+    var margin = {
+            top: 15,
+            right: 135,
+            bottom: 15,
+            left: 15
+    };
+
+	var origDimension = 330;
+    var width = 330 - margin.left - margin.right,
+        height = 330 - margin.top - margin.bottom;
+
+    var radius = Math.min(width, height) / 2 - 15
+
+    var svg = d3.select("#browsers-pie-chart")
+        .append("svg")
+		.attr("width", '100%')
+		.attr("height", '100%')
+		.attr('viewBox','0 0 '+ origDimension +' '+origDimension )
+        
+    g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+    var color = d3.scaleOrdinal(d3.schemeCategory10);
+
+    var pie = d3.pie().value(function(d) { 
+        return d.Pageviews; 
+    });
+
+    var arc = d3.arc()
+                .innerRadius(50)
+                .outerRadius(radius);
+
+	var arcOver = d3.arc()
+      .innerRadius(50)
+      .outerRadius(radius+5);
+
+    var arcs = g.selectAll("arc")
+                .data(pie(browsersData))
+                .enter()
+                .append("g")
+                .attr("class", "arc")
+
+    arcs.append("text")
+            .attr("x", (margin.top / 2) - 3)             
+            .attr("y", (margin.bottom / 2))
+            .attr("text-anchor", "middle")  
+            .style("font-size", "16px").text(function(d){
+            return (d.data.Pageviews/totalBrowsersData * 100).toFixed(2) + "%";
+            }).style("opacity", 0); 
+
+    arcs.append("path")
+        .attr("fill", function(d, i) {
+            return color(d.data.Pageviews);
+        })
+        .attr("d", arc)
+		.style('stroke', 'white')
+    	.style('stroke-width', 1)
+		.on("mouseover", function(d) {
+			d3.select(this).transition()
+			.duration(500)
+			.attr("d", arcOver);
+		})
+		.on("mouseout", function(d) {
+			d3.select(this).transition()
+			  .duration(500)
+			  .attr("d", arc);
+		});
+
+    arcs.on("mouseover", function(d, i) {
+            d3.select(this).select("text").transition()
+			.duration(500).style("opacity", 1); 
+			
+		})
+		.on("mouseout", function(d, i) {
+            d3.select(this).select("text").transition()
+			.duration(500).style("opacity", 0);
+		});
+
+    var legendG = svg.selectAll(".legend")
+        .data(pie(browsersData))
+        .enter().append("g")
+        .attr("transform", function(d,i){
+            return "translate(" + (width  -15) + "," + (i * 15 + 20) + ")";
+        })
+        .attr("class", "legend");   
+
+    legendG.append("circle")
+        .attr("cx", 5)
+        .attr("cy", 6)
+		.attr("r", 5)
+        .attr("fill", function(d, i) {
+            return color(d.data.Pageviews);
+        });
+
+    legendG.append("text")
+        .text(function(d){
+            return d.data.Browser + ":  " + d.data.Pageviews.toLocaleString();
+        })
+        .style("font-size", 12)
+        .attr("y", 10)
+        .attr("x", 11);
+
+    
+    
+    
+    
+    
+    
+
+
+
+    var svg = d3.select("#devices-pie-chart")
+        .append("svg")
+		.attr("width", '100%')
+		.attr("height", '100%')
+		.attr('viewBox','0 0 '+ origDimension +' '+origDimension )
+        
+    g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+    var arc = d3.arc()
+                .innerRadius(50)
+                .outerRadius(radius);
+
+    var arcs = g.selectAll("arc")
+                .data(pie(formFactorData))
+                .enter()
+                .append("g")
+                .attr("class", "arc")
+
+    arcs.append("text")
+            .attr("x", (margin.top / 2) - 3)             
+            .attr("y", (margin.bottom / 2))
+            .attr("text-anchor", "middle")  
+            .style("font-size", "16px").text(function(d){
+            return (d.data.Pageviews/totalFormFactorData * 100).toFixed(2)  + "%";
+            }).style("opacity", 0); 
+
+    arcs.append("path")
+        .attr("fill", function(d, i) {
+            return color(d.data.Pageviews);
+        })
+        .attr("d", arc)
+		.style('stroke', 'white')
+    	.style('stroke-width', 1)
+		.on("mouseover", function(d) {
+			d3.select(this).transition()
+			.duration(500)
+			.attr("d", arcOver);
+		})
+		.on("mouseout", function(d) {
+			d3.select(this).transition()
+			  .duration(500)
+			  .attr("d", arc);
+		});
+
+    arcs.on("mouseover", function(d, i) {
+            d3.select(this).select("text").transition()
+			.duration(500).style("opacity", 1); 
+			
+		})
+		.on("mouseout", function(d, i) {
+            d3.select(this).select("text").transition()
+			.duration(500).style("opacity", 0);
+		});
+
+    var legendG = svg.selectAll(".legend")
+        .data(pie(formFactorData))
+        .enter().append("g")
+        .attr("transform", function(d,i){
+            return "translate(" + (width  -15) + "," + (i * 15 + 20) + ")";
+        })
+        .attr("class", "legend");   
+
+    legendG.append("circle")
+        .attr("cx", 5)
+        .attr("cy", 6)
+		.attr("r", 5)
+        .attr("fill", function(d, i) {
+            return color(d.data.Pageviews);
+        });
+
+    legendG.append("text")
+        .text(function(d){
+            return d.data.FormFactor + ":  " + d.data.Pageviews.toLocaleString();
+        })
+        .style("font-size", 12)
+        .attr("y", 10)
+        .attr("x", 11);
+
+	
+    
+    
+    
+    
+    
+
+
+
+
+
+
+	var svg = d3.select("#ref-domain-pie-chart")
+        .append("svg")
+		.attr("width", '100%')
+		.attr("height", '100%')
+		.attr('viewBox','0 0 '+ origDimension +' '+origDimension )
+        
+    g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+    var arc = d3.arc()
+                .innerRadius(50)
+                .outerRadius(radius);
+
+	var arc2 = d3.arc()
+			.innerRadius(radius - 20)
+			.outerRadius(radius - 10);
+
+    var arcs = g.selectAll("arc")
+                .data(pie(refDomainData))
+                .enter()
+                .append("g")
+                .attr("class", "arc")
+
+    arcs.append("text")
+            .attr("x", (margin.top / 2) - 3)             
+            .attr("y", (margin.bottom / 2))
+            .attr("text-anchor", "middle")
+			.attr("fill", "white")
+            .style("font-size", "16px").text(function(d){
+            return (d.data.Pageviews/totalRefDomainData * 100).toFixed(2)  + "%";
+            }).style("opacity", 0); 
+
+	arcs.append("path")
+		.attr("d", function (d) {
+          return arc2(d);
+      }).attr("fill", function(d, i){
+          return color[i];
+      }).style("opacity", "0.4");
+
+    arcs.append("path")
+        .attr("fill", function(d, i) {
+            return color(d.data.Pageviews);
+        })
+        .attr("d", arc)
+		.style('stroke', '#333')
+    	.style('stroke-width', 1)
+		.on("mouseover", function(d) {
+			d3.select(this).transition()
+			.duration(500)
+			.attr("d", arcOver);
+		})
+		.on("mouseout", function(d) {
+			d3.select(this).transition()
+			  .duration(500)
+			  .attr("d", arc);
+		});
+
+    arcs.on("mouseover", function(d, i) {
+            d3.select(this).select("text").transition()
+			.duration(500).style("opacity", 1); 
+			
+		})
+		.on("mouseout", function(d, i) {
+            d3.select(this).select("text").transition()
+			.duration(500).style("opacity", 0);
+		});
+
+    var legendG = svg.selectAll(".legend")
+        .data(pie(refDomainData))
+        .enter().append("g")
+        .attr("transform", function(d,i){
+            return "translate(" + (width  -15) + "," + (i * 15 + 20) + ")";
+        })
+        .attr("class", "legend");   
+
+    legendG.append("circle")
+        .attr("cx", 5)
+        .attr("cy", 6)
+		.attr("r", 5)
+        .attr("fill", function(d, i) {
+            return color(d.data.Pageviews);
+        });
+
+    legendG.append("text")
+        .text(function(d){
+            return d.data.ReferringDomain + ":  " + d.data.Pageviews.toLocaleString();
+        })
+        .style("font-size", 12)
+        .attr("y", 10)
+        .attr("x", 11)
+		.attr("fill", "white");
+
+	
+    
+    
+    
+    
+    
+	
+    });
+</script>
