@@ -2,6 +2,7 @@ import argparse
 import collections
 import logging
 import os
+import re
 import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin, urlparse
@@ -98,10 +99,21 @@ BOOKMARKS_HTML = """
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
+
+INVALID_CHARS = re.compile(r'[<>:"\\|?*]')
+
+
+def sanitize_path(path):
+    """Replace characters that are invalid on Windows file systems."""
+    return '/'.join(INVALID_CHARS.sub('_', part) for part in path.split('/'))
+
 def save_file(content, directory, filename):
     """Save binary content to a file."""
     path = os.path.join(directory, filename)
     os.makedirs(os.path.dirname(path), exist_ok=True)
+    if os.path.exists(path):
+        logging.info(f"Skipping existing file: {path}")
+        return True
     try:
         with open(path, 'wb') as f:
             f.write(content)
@@ -132,7 +144,7 @@ def download_and_rewrite(url, session, output_dir, visited_urls, domain):
         'video': 'src', 'audio': 'src', 'source': 'src',
     }
 
-    current_page_dir = os.path.dirname(os.path.join(output_dir, urlparse(url).path.lstrip('/')))
+    current_page_dir = os.path.dirname(os.path.join(output_dir, sanitize_path(urlparse(url).path.lstrip('/'))))
 
     for tag_name, attr in tags.items():
         for element in soup.find_all(tag_name, **{attr: True}):
@@ -142,24 +154,28 @@ def download_and_rewrite(url, session, output_dir, visited_urls, domain):
             if urlparse(asset_url).netloc != domain:
                 continue
 
-            try:
-                asset_response = session.get(asset_url, timeout=10)
-                asset_response.raise_for_status()
-                parsed_asset_url = urlparse(asset_url)
-                asset_path = parsed_asset_url.path.lstrip('/')
-                if not asset_path:
-                    continue
-                local_path = os.path.join(output_dir, asset_path)
-                if save_file(asset_response.content, os.path.dirname(local_path), os.path.basename(local_path)):
-                    relative_path = os.path.relpath(local_path, start=current_page_dir)
-                    element[attr] = relative_path
-                    logging.info(f"Rewrote asset {asset_url_raw} to {relative_path}")
-            except requests.RequestException as e:
-                logging.warning(f"Failed to download asset {asset_url}: {e}")
+            parsed_asset_url = urlparse(asset_url)
+            asset_path = sanitize_path(parsed_asset_url.path.lstrip('/'))
+            if not asset_path:
+                continue
+            local_path = os.path.join(output_dir, asset_path)
 
-    page_path_part = urlparse(url).path.lstrip('/')
-    if not page_path_part or page_path_part.endswith('/'):
-        page_path_part = os.path.join(page_path_part, 'index.html')
+            if not os.path.exists(local_path):
+                try:
+                    asset_response = session.get(asset_url, timeout=10)
+                    asset_response.raise_for_status()
+                    save_file(asset_response.content, os.path.dirname(local_path), os.path.basename(local_path))
+                except requests.RequestException as e:
+                    logging.warning(f"Failed to download asset {asset_url}: {e}")
+
+            relative_path = os.path.relpath(local_path, start=current_page_dir)
+            element[attr] = relative_path
+            logging.info(f"Rewrote asset {asset_url_raw} to {relative_path}")
+
+    page_path_part = sanitize_path(urlparse(url).path.lstrip('/'))
+    if (not page_path_part or page_path_part.endswith('/') or
+            not os.path.splitext(page_path_part)[1]):
+        page_path_part = os.path.join(page_path_part.rstrip('/'), 'index.html')
 
     if soup.body:
         script_tag = soup.new_tag("script")
@@ -174,14 +190,19 @@ def download_and_rewrite(url, session, output_dir, visited_urls, domain):
         if parsed_link.netloc == domain:
             if absolute_link not in visited_urls:
                 new_links.append(absolute_link)
-            link_path_part = parsed_link.path.lstrip('/')
-            if not link_path_part or link_path_part.endswith('/'):
-                link_path_part = os.path.join(link_path_part, 'index.html')
+            link_path_part = sanitize_path(parsed_link.path.lstrip('/'))
+            if (not link_path_part or link_path_part.endswith('/') or
+                    not os.path.splitext(link_path_part)[1]):
+                link_path_part = os.path.join(link_path_part.rstrip('/'), 'index.html')
             final_link_path = os.path.join(output_dir, link_path_part)
             relative_link = os.path.relpath(final_link_path, start=current_page_dir)
             link['href'] = relative_link
 
-    save_file(soup.prettify('utf-8'), os.path.join(output_dir, os.path.dirname(page_path_part)), os.path.basename(page_path_part))
+    save_file(
+        soup.prettify('utf-8'),
+        os.path.join(output_dir, os.path.dirname(page_path_part)),
+        os.path.basename(page_path_part),
+    )
     return new_links, page_path_part
 
 def main():
