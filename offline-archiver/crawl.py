@@ -106,6 +106,7 @@ STATE_FILE = 'crawl_state.json'
 def sanitize_path(path):
     """Replace characters that are invalid on Windows file systems."""
     return '/'.join(INVALID_CHARS.sub('_', part) for part in path.split('/'))
+
 def load_state(output_dir, start_url):
     """Load crawl state if it exists, otherwise return empty state."""
     state_path = os.path.join(output_dir, STATE_FILE)
