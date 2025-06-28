@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookmarks</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; padding: 2em; color: #333; }
+        h1 { color: #000; }
+        ul { list-style-type: none; padding: 0; }
+        li { margin-bottom: 1em; background-color: #f0f0f0; padding: 10px; border-radius: 5px;}
+        a { text-decoration: none; color: #007bff; font-weight: bold; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <h1>My Bookmarks</h1>
+    <ul id="bookmarks-list"></ul>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const listElement = document.getElementById('bookmarks-list');
+            fetch('/api/bookmarks')
+                .then(response => response.json())
+                .then(bookmarks => {
+                    if (bookmarks && bookmarks.length > 0) {
+                        bookmarks.forEach(bookmark => {
+                            const listItem = document.createElement('li');
+                            const link = document.createElement('a');
+                            link.href = bookmark.url;
+                            link.textContent = bookmark.title;
+                            listItem.appendChild(link);
+                            listElement.appendChild(listItem);
+                        });
+                    } else {
+                        listElement.innerHTML = '<li>No bookmarks yet.</li>';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching bookmarks:', error);
+                    listElement.innerHTML = '<li>Error loading bookmarks.</li>';
+                });
+        });
+    </script>
+</body>
+</html>
