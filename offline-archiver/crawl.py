@@ -196,16 +196,24 @@ def get_page_path_from_url(url, output_dir):
 
 def get_asset_path_from_url(url, output_dir):
     """
-    FIX: Generates a local file path for an asset URL.
-    Does NOT append 'index.html', preserving the original filename.
+    FIXED: Generates a local file path for an asset URL.
+    Correctly handles directory-like paths to prevent file/directory name collisions.
     """
     parsed_url = urlparse(url)
     path_components = [sanitize_path(part) for part in parsed_url.path.strip('/').split('/') if part]
+
     if not path_components:
-        # Edge case for a URL like "http://example.com" used as an asset source.
-        # We'll use the domain name as the filename.
+        # This handles an asset URL that is just the domain, e.g., <link href="https://rpgbot.net">
+        # Give it a specific, non-conflicting filename.
         sanitized_domain = sanitize_path(parsed_url.netloc)
-        return os.path.join(output_dir, sanitized_domain)
+        return os.path.join(output_dir, f"{sanitized_domain}_root_asset.html")
+
+    # Determine if the URL path's last component is a directory or a file.
+    last_part = parsed_url.path.strip('/').split('/')[-1]
+    if parsed_url.path.endswith('/') or '.' not in last_part:
+        # If it's a directory (ends in /) or has no extension, append index.html.
+        # This is the key fix to prevent conflicts.
+        path_components.append('index.html')
 
     return os.path.join(output_dir, *path_components)
 
