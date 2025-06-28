@@ -1,5 +1,6 @@
 import argparse
 import collections
+import json
 import logging
 import os
 import re
@@ -99,13 +100,41 @@ BOOKMARKS_HTML = """
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-
 INVALID_CHARS = re.compile(r'[<>:"\\|?*]')
-
+STATE_FILE = 'crawl_state.json'
 
 def sanitize_path(path):
     """Replace characters that are invalid on Windows file systems."""
     return '/'.join(INVALID_CHARS.sub('_', part) for part in path.split('/'))
+
+def load_state(output_dir, start_url):
+    """Load crawl state if it exists, otherwise return empty state."""
+    state_path = os.path.join(output_dir, STATE_FILE)
+    if os.path.exists(state_path):
+        try:
+            with open(state_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            if data.get('start_url') == start_url:
+                visited = set(data.get('visited', []))
+                queue = collections.deque(data.get('queue', []))
+                logging.info('Resuming previous crawl session.')
+                return visited, queue
+        except (IOError, json.JSONDecodeError) as e:
+            logging.warning(f'Could not load state file: {e}')
+    return set(), collections.deque([start_url])
+
+def save_state(output_dir, start_url, visited_urls, queue):
+    """Persist crawl state to disk."""
+    state_path = os.path.join(output_dir, STATE_FILE)
+    try:
+        with open(state_path, 'w', encoding='utf-8') as f:
+            json.dump({
+                'start_url': start_url,
+                'visited': list(visited_urls),
+                'queue': list(queue)
+            }, f)
+    except IOError as e:
+        logging.warning(f'Failed to write state file: {e}')
 
 def save_file(content, directory, filename):
     """Save binary content to a file."""
@@ -221,17 +250,20 @@ def main():
     session = requests.Session()
     session.headers.update({'User-Agent': 'Offline-Site-Archiver/1.0'})
 
-    visited_urls = set()
-    queue = collections.deque([start_url])
+    visited_urls, queue = load_state(output_dir, start_url)
 
     while queue:
         current_url = queue.popleft()
         new_links, _ = download_and_rewrite(current_url, session, output_dir, visited_urls, domain)
         if new_links:
             queue.extend(new_links)
+        save_state(output_dir, start_url, visited_urls, queue)
 
     save_file(BOOKMARKS_HTML.encode('utf-8'), output_dir, '_bookmarks.html')
     logging.info("Created _bookmarks.html page.")
+    state_path = os.path.join(output_dir, STATE_FILE)
+    if os.path.exists(state_path):
+        os.remove(state_path)
     logging.info("Crawling finished.")
 
 if __name__ == '__main__':
